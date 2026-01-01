@@ -1,13 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  Phone, 
-  User, 
-  Clock, 
+import {
+  ArrowLeft,
+  Phone,
+  User,
+  Clock,
   Activity,
-  Volume2,
-  VolumeX,
   Pause,
   Play,
   Square,
@@ -20,10 +18,10 @@ import type { LiveCall, TranscriptLine, CallMetrics, CallQualityMetrics } from '
 import { Button } from '../Button';
 import { Badge } from '../Badge';
 import { Card } from '../Card';
-import { 
-  getLiveCallDetails, 
-  getCallMetrics, 
-  getCallTranscript, 
+import {
+  getLiveCallDetails,
+  getCallMetrics,
+  getCallTranscript,
   getCallQuality,
   endCall,
   joinCall,
@@ -31,7 +29,7 @@ import {
   pauseRecording,
   resumeRecording
 } from '../../services/api';
-import { formatDuration, formatRelativeTime } from '../../utils/formatters';
+import { formatDuration } from '../../utils/formatters';
 import { TranscriptViewer } from './TranscriptViewer';
 import { AudioPlayer } from './AudioPlayer';
 import { MetricsDisplay } from './MetricsDisplay';
@@ -55,8 +53,8 @@ export const CallMonitoringPanel = () => {
   const [showCallHistory, setShowCallHistory] = useState(false);
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
-  
-  const intervalRef = useRef<NodeJS.Timeout>();
+
+  const intervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!callId) return;
@@ -203,7 +201,7 @@ export const CallMonitoringPanel = () => {
               <ArrowLeft size={16} />
             </Button>
           </Link>
-          
+
           <div>
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
               Call Monitoring
@@ -311,8 +309,8 @@ export const CallMonitoringPanel = () => {
             <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
               Audio Controls
             </h3>
-            
-            <AudioPlayer 
+
+            <AudioPlayer
               callId={callId!}
               playing={audioPlaying}
               muted={muted}
@@ -354,9 +352,9 @@ export const CallMonitoringPanel = () => {
 
           {/* Sentiment */}
           {call.sentiment && (
-            <SentimentIndicator 
-              sentiment={call.sentiment} 
-              score={call.sentimentScore || 0} 
+            <SentimentIndicator
+              sentiment={call.sentiment}
+              score={call.sentimentScore || 0}
             />
           )}
         </div>
@@ -364,7 +362,7 @@ export const CallMonitoringPanel = () => {
         {/* Middle Column - Transcript */}
         <div className="lg:col-span-2">
           <Card className="h-96">
-            <TranscriptViewer 
+            <TranscriptViewer
               transcript={transcript}
               callId={callId!}
             />
@@ -409,7 +407,7 @@ export const CallMonitoringPanel = () => {
 
       {/* Call History Panel */}
       {showCallHistory && (
-        <CallHistoryPanel 
+        <CallHistoryPanel
           customerId={call.callerId}
           onClose={() => setShowCallHistory(false)}
         />

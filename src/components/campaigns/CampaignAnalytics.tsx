@@ -1,27 +1,22 @@
-import { 
-  Users, 
-  PhoneCall, 
-  CheckCircle2, 
-  Clock, 
+import {
+  Users,
+  PhoneCall,
+  Clock,
   TrendingUp,
   Download,
-  AlertCircle,
-  PhoneForwarded
 } from 'lucide-react';
-import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  CartesianGrid, 
-  Tooltip, 
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
   ResponsiveContainer,
   PieChart,
   Pie,
   Cell,
   LineChart,
   Line,
-  Legend
+  Legend,
 } from 'recharts';
 import type { CampaignAnalyticsData } from '../../types';
 import { Button } from '../index';
@@ -122,34 +117,34 @@ export const CampaignAnalytics = ({
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={callTrends}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
-                <XAxis 
-                  dataKey="date" 
-                  stroke="#9CA3AF" 
-                  fontSize={12} 
-                  tickLine={false} 
-                  axisLine={false} 
+                <XAxis
+                  dataKey="date"
+                  stroke="#9CA3AF"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
                 />
-                <YAxis 
-                  stroke="#9CA3AF" 
-                  fontSize={12} 
-                  tickLine={false} 
-                  axisLine={false} 
+                <YAxis
+                  stroke="#9CA3AF"
+                  fontSize={12}
+                  tickLine={false}
+                  axisLine={false}
                 />
-                <Tooltip 
-                  contentStyle={{ 
-                    backgroundColor: '#FFF', 
-                    borderRadius: '8px', 
-                    border: 'none', 
-                    boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' 
-                  }} 
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: '#FFF',
+                    borderRadius: '8px',
+                    border: 'none',
+                    boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                  }}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="count" 
-                  stroke="#3B82F6" 
-                  strokeWidth={2} 
-                  dot={{ r: 4, fill: '#3B82F6' }} 
-                  activeDot={{ r: 6 }} 
+                <Line
+                  type="monotone"
+                  dataKey="count"
+                  stroke="#3B82F6"
+                  strokeWidth={2}
+                  dot={{ r: 4, fill: '#3B82F6' }}
+                  activeDot={{ r: 6 }}
                 />
               </LineChart>
             </ResponsiveContainer>
@@ -171,7 +166,7 @@ export const CampaignAnalytics = ({
                   dataKey="count"
                   nameKey="status"
                 >
-                  {contactStatus.map((entry, index) => (
+                  {contactStatus.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>

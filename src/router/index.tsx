@@ -11,6 +11,17 @@ import {
   TeamSettingsPage,
   TeamAuditPage,
   UserProfilePage,
+  KnowledgeBasePage,
+  CampaignsPage,
+  CampaignDetailPage,
+  LiveCalls,
+  CallMonitor,
+  AgentsPage,
+  AgentDetailPage,
+  OrdersPage,
+  PaymentsPage,
+  PaymentDetailPage,
+  InvoicesPage,
 } from '../pages';
 import { ProtectedRoute } from '../components';
 
@@ -36,6 +47,114 @@ export const AppRouter = () => {
           element={
             <ProtectedRoute>
               <UsersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/knowledge-base"
+          element={
+            <ProtectedRoute>
+              <KnowledgeBasePage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/campaigns"
+          element={
+            <ProtectedRoute>
+              <CampaignsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/campaigns/:id"
+          element={
+            <ProtectedRoute>
+              <CampaignDetailPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/live-calls"
+          element={
+            <ProtectedRoute>
+              <LiveCalls />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/agents"
+          element={
+            <ProtectedRoute>
+              <AgentsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/agents/:id"
+          element={
+            <ProtectedRoute>
+              <AgentDetailPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/orders"
+          element={
+            <ProtectedRoute>
+              <OrdersPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/payments"
+          element={
+            <ProtectedRoute>
+              <PaymentsPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/payments/:id"
+          element={
+            <ProtectedRoute>
+              <PaymentDetailPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/invoices"
+          element={
+            <ProtectedRoute>
+              <InvoicesPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/invoices/:id"
+          element={
+            <ProtectedRoute>
+              <PaymentDetailPage /> {/* Reusing PaymentDetail for Invoice detail as requested or appropriate */}
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/calls/:callId/monitor"
+          element={
+            <ProtectedRoute>
+              <CallMonitor />
             </ProtectedRoute>
           }
         />
